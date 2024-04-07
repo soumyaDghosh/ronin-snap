@@ -24,6 +24,7 @@ parts:
     override-build: |
       mkdir bin/
       gem install --bindir bin/ ronin -v 2.0.5
+      ls bin/
 
 apps:
   ronin:
