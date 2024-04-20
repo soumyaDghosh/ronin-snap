@@ -36,39 +36,57 @@ parts:
     stage-packages:
       - libreadline-dev
       - libsqlite3-dev
+    build-environment:
+      - GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     override-build: |
-      gem install --install-dir "${SNAPCRAFT_PART_INSTALL}" ronin -v "$SNAPCRAFT_PROJECT_VERSION"
+      gem install ronin -v "$SNAPCRAFT_PROJECT_VERSION"
 
 apps:
   ronin:
     command: bin/ronin
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, network-bind, removable-media]
   ronin-db:
     command: bin/ronin-db
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, removable-media]
   ronin-exploits:
     command: bin/ronin-exploits
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, network-bind, removable-media]
   ronin-fuzzer:
     command: bin/ronin-fuzzer
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, network-bind, removable-media]
   ronin-payloads:
     command: bin/ronin-payloads
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, network-bind, removable-media]
   ronin-repos:
     command: bin/ronin-repos
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, removable-media]
   ronin-vulns:
     command: bin/ronin-vulns
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, removable-media]
   wordlist:
     command: bin/wordlist
+    environment:
+      GEM_HOME: ${SNAPCRAFT_PART_INSTALL}
     adapter: none
     plugs: [home, network, removable-media]
